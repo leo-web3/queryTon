@@ -40,11 +40,14 @@ async function fetchWalletData(address) {
 
 async function main() {
   const walletData = JSON.parse(fs.readFileSync("wallet.json", "utf8"));
-
+  let total = 0;
   for (const wallet of walletData) {
     const data = await fetchWalletData(wallet);
-    console.log(`Data for wallet ${wallet}:`, data.data.coins[0].amount / 1000000000);
+    let amount = data.data.coins[0].amount / 1000000000;
+    console.log(`Data for wallet ${wallet}:`, amount);
+    total += amount;
   }
+  console.log("Total:", total);
 }
 
 main();
