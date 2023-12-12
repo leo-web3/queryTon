@@ -43,7 +43,6 @@ async function main() {
 
   for (const wallet of walletData) {
     const data = await fetchWalletData(wallet);
-    console.log(data.data.coins[0].amount, "-data");
     console.log(`Data for wallet ${wallet}:`, data.data.coins[0].amount / 1000000000);
   }
 }
